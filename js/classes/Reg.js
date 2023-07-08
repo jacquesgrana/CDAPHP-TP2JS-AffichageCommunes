@@ -1,3 +1,6 @@
+/**
+ * Classe des régions.
+ */
 export default class Reg {
     #nom
     #code

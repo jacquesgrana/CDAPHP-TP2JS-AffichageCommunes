@@ -16,20 +16,19 @@ body {
     padding: 40px;
 }
 
-.select-class {
+select.select-class {
     outline: none !important;
     background-color: hsl(204, 72%, 21%) !important;
     border: solid thin rgb(230, 196, 47) !important;
-}
 
-/*
-.select-class:focus option,
-.dropdown-menu.inner {
-    background-color: hsl(204, 72%, 21%) !important;
-    color: rgb(230, 196, 47) !important;
-}
-*/
+    outline : none;
+    overflow : hidden;
+    text-indent : 0.01px;
+    text-overflow : '';
+    -webkit-appearance: none;
+       -moz-appearance: none;
+        -ms-appearance: none;
+         -o-appearance: none;
+            appearance: none;
 
-.options {
-    background-color: hsl(204, 72%, 21%) m !important;
 }

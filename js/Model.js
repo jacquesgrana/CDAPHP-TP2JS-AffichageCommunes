@@ -2,6 +2,9 @@ import Reg from "./classes/Reg.js";
 import Dpt from "./classes/Dpt.js";
 import Cmn from "./classes/Cmn.js";
 
+/**
+ * Classe du modèle.
+ */
 export default class Model {
   #regs;
   #dpts;
@@ -12,10 +15,12 @@ export default class Model {
   #selectedCmnCode;
   #selectedCmn;
 
-  constructor(controller) {
-    this.controller = controller;
+  constructor() {
   }
 
+  /**
+   * Méthode d'initialisation.
+   */
   init = () => {
     this.#regs = [];
     this.#dpts = [];
@@ -26,6 +31,11 @@ export default class Model {
     this.#selectedCmn = {};
   };
 
+  /**
+   * Méthode qui récupère la liste des régions par une requête et appelle la fonction
+   * de callback qui rempli le select correspondant à partir des données récupérées.
+   * @param {function} fillSelectReg : callback du controleur.
+   */
   loadRegs = (fillSelectReg) => {
     fetch("https://geo.api.gouv.fr/regions", {
       method: "GET",
@@ -45,6 +55,13 @@ export default class Model {
       });
   };
 
+  /**
+   * Méthode qui récupère la liste des départements d'une reqion par une requête et 
+   * appelle la fonction de callback qui rempli le select correspondant à partir des 
+   * données récupérées.
+   * @param {function} fillSelectDpt : callback du controleur.
+   * @param {number} codeReg : code de la région.
+   */
   loadDpts = (fillSelectDpt, codeReg) => {
     fetch(`https://geo.api.gouv.fr/regions/${codeReg}/departements`, {
       method: "GET",
@@ -64,6 +81,13 @@ export default class Model {
       });
   };
 
+  /**
+   * Méthode qui récupère la liste des communes d'un département par une requête et 
+   * appelle la fonction de callback qui rempli le select correspondant à partir des 
+   * données récupérées.
+   * @param {function} fillSelectCmn : callback du controleur.
+   * @param {number} codeDpt : code du département.
+   */
   loadCmns = (fillSelectCmn, codeDpt) => {
     fetch(`https://geo.api.gouv.fr/departements/${codeDpt}/communes`, {
       method: "GET",
@@ -85,6 +109,12 @@ export default class Model {
       });
   };
 
+   /**
+   * Méthode qui récupère une commune d'un département par une requête et 
+   * appelle la fonction de callback qui rempli la div qui affiche la commune.
+   * @param {function} callback : callback du controleur.
+   * @param {number} code : code de la commune.
+   */
   loadCmnToDisplay = (callback, code) => {
     this.#selectedCmnCode = code;
     fetch(`https://geo.api.gouv.fr/communes/${this.#selectedCmnCode}`, {

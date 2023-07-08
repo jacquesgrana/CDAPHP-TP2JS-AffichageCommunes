@@ -1,5 +1,8 @@
 import Reg from "./Reg.js"
 
+/**
+ * Classe des communes.
+ */
 export default class Cmn extends Reg {
 
     #cp;
