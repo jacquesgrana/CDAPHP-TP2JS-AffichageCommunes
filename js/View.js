@@ -1,4 +1,5 @@
 import { createMarkup } from "./utils/dom.js";
+import WeatherLib from "./utils/WeatherLib.js"
 
 /**
  * Classe de la vue.
@@ -220,28 +221,28 @@ export default class View {
     //console.log("view 220 : divMeteo.innerHTML :", divMeteo.innerHTML);
     divMeteo.innerHTML = "";
     const titleGeo = createMarkup("h5", "Données géographiques", divMeteo, [
-      { class: "mt-5 mb-3" },
+      { class: "mt-5 mb-3 text-warning" },
     ]);
     const divGeo = createMarkup("div", "", divMeteo, [
       {
-        class: "d-flex justify-content-center flex-column align-items-center",
+        class: "d-flex justify-content-center flex-column align-items-start",
       },
     ]);
-    const latitude = createMarkup("p", "Latitude (°) : ", divGeo);
+    const latitude = createMarkup("p", "Latitude (°) : ", divGeo, [{class: "mx-4"}]);
     const spanLatitude = createMarkup(
       "span",
       `${ephemeridDatas.city.latitude}`,
       latitude,
       [{ class: "text-warning" }, { id: "latitude" }]
     );
-    const longitude = createMarkup("p", "Longitude (°) : ", divGeo);
+    const longitude = createMarkup("p", "Longitude (°) : ", divGeo, [{class: "mx-4"}]);
     const spanCmnInsee = createMarkup(
       "span",
       `${ephemeridDatas.city.longitude}`,
       longitude,
       [{ class: "text-warning" }, { id: "longitude" }]
     );
-    const altitude = createMarkup("p", "Altitude (m) : ", divGeo);
+    const altitude = createMarkup("p", "Altitude (m) : ", divGeo, [{class: "mx-4"}]);
     const spanAltitude = createMarkup(
       "span",
       `${ephemeridDatas.city.altitude}`,
@@ -249,17 +250,17 @@ export default class View {
       [{ class: "text-warning" }, { id: "altitude" }]
     );
     const titleEphem = createMarkup("h5", "Ephéméride", divMeteo, [
-      { class: "mt-3 mb-3" },
+      { class: "mt-3 mb-3 text-warning" },
     ]);
     const divEphem = createMarkup("div", "", divMeteo, [
       {
-        class: "d-flex justify-content-center flex-column align-items-center",
+        class: "d-flex justify-content-center flex-column align-items-start",
       },
     ]);
     const diffDurationDay = createMarkup(
       "p",
       "Variation du jour (minute) : ",
-      divEphem
+      divEphem, [{class: "mx-4"}]
     );
     const spanDiffDD = createMarkup(
       "span",
@@ -270,7 +271,7 @@ export default class View {
     const durationDay = createMarkup(
       "p",
       "Durée du jour (heure:minute) : ",
-      divEphem
+      divEphem, [{class: "mx-4"}]
     );
     const spanDurationD = createMarkup(
       "span",
@@ -281,7 +282,7 @@ export default class View {
     const sunrise = createMarkup(
       "p",
       "Lever du jour (heure:minute) : ",
-      divEphem
+      divEphem, [{class: "mx-4"}]
     );
     const spanSunrise = createMarkup(
       "span",
@@ -289,24 +290,87 @@ export default class View {
       sunrise,
       [{ class: "text-warning" }, { id: "sunrise" }]
     );
-    const sunset = createMarkup("p", "Fin du jour (heure:minute) : ", divEphem);
+    const sunset = createMarkup("p", "Fin du jour (heure:minute) : ", divEphem, [{class: "mx-4"}]);
     const spanSunset = createMarkup(
       "span",
       `${ephemeridDatas.ephemeride.sunset}`,
       sunset,
       [{ class: "text-warning" }, { id: "sunset" }]
     );
-  };
+  }
+
+  renderMeteo = (meteoDatas) => {
+    console.log("view 303 : render meteo datas : ", meteoDatas);
+    const divMeteo = document.getElementById("div-meteo");
+    //console.log("view 220 : divMeteo.innerHTML :", divMeteo.innerHTML);
+    //divMeteo.innerHTML = "";
+    const titleMeteo = createMarkup("h5", "Données météorologiques", divMeteo, [
+      { class: "mt-3 mb-3 text-warning" },
+    ]);
+    const divMeteoMeteo = createMarkup("div", "", divMeteo, [
+      {
+        class: "d-flex justify-content-center flex-column align-items-start",
+      },
+    ]);
+    const weather = createMarkup("p", "Temps : ", divMeteoMeteo, [{class: "mx-4"}]);
+    const spanWeather = createMarkup(
+      "span",
+      `${WeatherLib.getWeatherNameByCode(meteoDatas.forecast.weather)}`,
+      weather,
+      [{ class: "text-warning" }, { id: "weather" }]
+    );
+    const tempMin = createMarkup("p", "Température min. (°C) : ", divMeteoMeteo, [{class: "mx-4"}]);
+    const spanTempMin = createMarkup(
+      "span",
+      `${meteoDatas.forecast.tmin}`,
+      tempMin,
+      [{ class: "text-warning" }, { id: "temp-min" }]
+    );
+    const tempMax = createMarkup("p", "Température max. (°C) : ", divMeteoMeteo, [{class: "mx-4"}]);
+    const spanTempMax = createMarkup(
+      "span",
+      `${meteoDatas.forecast.tmax}`,
+      tempMax,
+      [{ class: "text-warning" }, { id: "temp-max" }]
+    );
+  }
 
   /**
-   * 
-diff_duration_day: -2 ok
-​​
-duration_day: "15:37"
-​​
-sunrise: "05:50"
-​​
-sunset: "21:27"
+{
+    "city": {
+        "insee": "35238",
+        "cp": 35000,
+        "name": "Rennes",
+        "latitude": 48.112,
+        "longitude": -1.6819,
+        "altitude": 38
+    },
+    "update": "2020-10-29T12:40:08+0100",
+    "forecast": {
+        "insee": "35238",
+        "cp": 35000,
+        "latitude": 48.112,
+        "longitude": -1.6819,
+        "day": 0,
+        "datetime": "2020-10-29T01:00:00+0100",
+        "wind10m": 15,
+        "gust10m": 49,
+        "dirwind10m": 230,
+        "rr10": 0.2,
+        "rr1": 0.3,
+        "probarain": 40,
+        "weather": 4,
+        "tmin": 11,
+        "tmax": 17,
+        "sun_hours": 1,
+        "etp": 1,
+        "probafrost": 0,
+        "probafog": 0,
+        "probawind70": 0,
+        "probawind100": 0,
+        "gustx": 49
+    }
+}
    */
 
   /**

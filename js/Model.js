@@ -19,6 +19,7 @@ export default class Model {
   #selectedCmn;
 
   #ephemeridDatas = {};
+  #meteoDatas = {};
   #isMeteoDivOpened = false;
 
   constructor() {
@@ -147,8 +148,8 @@ export default class Model {
   };
 
   loadEphemerid = (callBack, ephemeridDatas, cmnInsee) => {
-    console.log("model : load ephemerid");
-    console.log("model : cmnInsee :", cmnInsee);
+    console.log("model 150 : load ephemerid");
+    console.log("model 151 : cmnInsee :", cmnInsee);
 
     const headers = new Headers();
     //headers.append('Authorization', `Bearer ${this.#tokenMeteoConcept}`);
@@ -173,8 +174,30 @@ export default class Model {
     });
   }
 
-  loadMeteo = (callBack, ephemeridDatas, cmnInsee) => {
+  loadMeteo = (callBack, meteoDatas, cmnInsee) => {
       // https://api.meteo-concept.com/api/forecast/daily/0?token=MON_TOKEN&insee=35238
+    console.log("model 178 : load météo");
+    const headers = new Headers();
+    //headers.append('Authorization', `Bearer ${this.#tokenMeteoConcept}`);
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    headers.append('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With');
+    //const url = `${this.#endPointMeteoConcept}/api/ephemeride/1?insee=${cmnInsee}`;
+    const url = `${this.#endPointMeteoConcept}/api/forecast/daily/0?token=${this.#tokenMeteoConcept}&insee=${cmnInsee}`;
+
+    fetch(url, {
+      headers: headers,
+      method: 'GET',
+    })
+    .then(response => response.json())
+    .then(data => {
+      this.#meteoDatas = data;
+      meteoDatas = data;
+      callBack(this.#meteoDatas);
+    })
+    .catch(error => {
+      console.error("error :", error);
+    });
   }
 
   /**
@@ -234,6 +257,22 @@ export default class Model {
 
   set selectedCmn(newSelectedCmn) {
     this.#selectedCmn = newSelectedCmn;
+  }
+
+  get ephemeridDatas() {
+    return this.#ephemeridDatas;
+  }
+
+  set ephemeridDatas(newValue) {
+    this.#ephemeridDatas = newValue;
+  }
+
+  get meteoDatas() {
+    return this.#meteoDatas;
+  }
+
+  set meteoDatas(newValue) {
+    this.#meteoDatas = newValue;
   }
 
   get isMeteoDivOpened() {

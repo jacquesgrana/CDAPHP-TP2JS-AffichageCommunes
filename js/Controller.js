@@ -126,6 +126,7 @@ export default class Controller {
     else {
       this.#model.isMeteoDivOpened = true;
       this.#model.loadEphemerid(this.displayEphemerid, this.#model.ephemeridDatas, this.#model.selectedCmnCode);
+      this.#model.loadMeteo(this.displayMeteo, this.#model.meteoDatas, this.#model.selectedCmnCode)
       // TODO changer texte bouton
     }
     this.#view.toggleBtnMeteoText(this.#model.isMeteoDivOpened);
@@ -148,6 +149,14 @@ export default class Controller {
     
     console.log("controller : affichage de l'ephemeride");
     this.#view.renderEphemerid(ephemeridDatas);
+    /*
+    this.#view.renderBtnMeteo();
+    this.#view.toggleBtnMeteoText(this.#model.isMeteoDivOpened);
+    this.#view.createClickListenerMeteoBtn(this.clickBtnMeteo);*/
+  }
+
+  displayMeteo = (meteoDatas) => {
+    this.#view.renderMeteo(meteoDatas);
     this.#view.renderBtnMeteo();
     this.#view.toggleBtnMeteoText(this.#model.isMeteoDivOpened);
     this.#view.createClickListenerMeteoBtn(this.clickBtnMeteo);
