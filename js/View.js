@@ -280,7 +280,7 @@ export default class View {
     );
     const sunrise = createMarkup(
       "p",
-      "Levé du jour (heure:minute) : ",
+      "Lever du jour (heure:minute) : ",
       divEphem
     );
     const spanSunrise = createMarkup(
