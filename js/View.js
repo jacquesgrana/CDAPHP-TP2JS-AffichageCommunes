@@ -333,6 +333,49 @@ export default class View {
       tempMax,
       [{ class: "text-warning" }, { id: "temp-max" }]
     );
+    const sunHours = createMarkup("p", "Heures d'ensoleillement (heure) : ", divMeteoMeteo, [{class: "mx-4"}]);
+    const spanSunHours = createMarkup(
+      "span",
+      `${meteoDatas.forecast.sun_hours}`,
+      sunHours,
+      [{ class: "text-warning" }, { id: "sun-hours" }]
+    );
+    const probaRain = createMarkup("p", "Probabilité de pluie (%) : ", divMeteoMeteo, [{class: "mx-4"}]);
+    const spanProbaRain = createMarkup(
+      "span",
+      `${meteoDatas.forecast.probarain}`,
+      probaRain,
+      [{ class: "text-warning" }, { id: "proba-rain" }]
+    );
+    const probaFrost = createMarkup("p", "Probabilité de gel (%) : ", divMeteoMeteo, [{class: "mx-4"}]);
+    const spanProbaFrost = createMarkup(
+      "span",
+      `${meteoDatas.forecast.probafrost}`,
+      probaFrost,
+      [{ class: "text-warning" }, { id: "proba-frost" }]
+    );
+    const probaFog = createMarkup("p", "Probabilité de brouillard (%) : ", divMeteoMeteo, [{class: "mx-4"}]);
+    const spanProbaFog = createMarkup(
+      "span",
+      `${meteoDatas.forecast.probafog}`,
+      probaFog,
+      [{ class: "text-warning" }, { id: "proba-fog" }]
+    );
+
+    const probaWind70 = createMarkup("p", "Probabilité de vent > 70 km/h (%) : ", divMeteoMeteo, [{class: "mx-4"}]);
+    const spanProbaWind70 = createMarkup(
+      "span",
+      `${meteoDatas.forecast.probawind70}`,
+      probaWind70,
+      [{ class: "text-warning" }, { id: "proba-wind-70" }]
+    );
+    const probaWind100 = createMarkup("p", "Probabilité de vent > 100 km/h (%) : ", divMeteoMeteo, [{class: "mx-4"}]);
+    const spanProbaWind100 = createMarkup(
+      "span",
+      `${meteoDatas.forecast.probawind100}`,
+      probaWind100,
+      [{ class: "text-warning" }, { id: "proba-wind-100" }]
+    );
   }
 
   /**
