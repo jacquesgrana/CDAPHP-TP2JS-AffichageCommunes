@@ -9,11 +9,17 @@ export default class Model {
   #regs;
   #dpts;
   #cmns;
+  #endPointGeoApi = "https://geo.api.gouv.fr";
+  #endPointMeteoConcept = "https://api.meteo-concept.com";
+  #tokenMeteoConcept = "06a3e3f2f54d0caa80e3915bca02c559b6d425804cd52155164e57c6d48bd43e";
 
   #selectedRegCode;
   #selectedDptCode;
   #selectedCmnCode;
   #selectedCmn;
+
+  #ephemeridDatas = {};
+  #isMeteoDivOpened = false;
 
   constructor() {
   }
@@ -37,7 +43,7 @@ export default class Model {
    * @param {function} fillSelectReg : callback du controleur.
    */
   loadRegs = (fillSelectReg) => {
-    fetch("https://geo.api.gouv.fr/regions", {
+    fetch(`${this.#endPointGeoApi}/regions`, {
       method: "GET",
     })
       .then((res) => {
@@ -63,7 +69,7 @@ export default class Model {
    * @param {number} codeReg : code de la région.
    */
   loadDpts = (fillSelectDpt, codeReg) => {
-    fetch(`https://geo.api.gouv.fr/regions/${codeReg}/departements`, {
+    fetch(`${this.#endPointGeoApi}/regions/${codeReg}/departements`, {
       method: "GET",
     })
       .then((res) => {
@@ -89,7 +95,7 @@ export default class Model {
    * @param {number} codeDpt : code du département.
    */
   loadCmns = (fillSelectCmn, codeDpt) => {
-    fetch(`https://geo.api.gouv.fr/departements/${codeDpt}/communes`, {
+    fetch(`${this.#endPointGeoApi}/departements/${codeDpt}/communes`, {
       method: "GET",
     })
       .then((res) => {
@@ -117,7 +123,7 @@ export default class Model {
    */
   loadCmnToDisplay = (callback, code) => {
     this.#selectedCmnCode = code;
-    fetch(`https://geo.api.gouv.fr/communes/${this.#selectedCmnCode}`, {
+    fetch(`${this.#endPointGeoApi}/communes/${this.#selectedCmnCode}`, {
       method: "GET",
     })
       .then((res) => {
@@ -128,7 +134,10 @@ export default class Model {
             data.nom,
             data.code,
             data.codesPostaux[0],
-            data.population
+            data.population,
+            undefined,
+            undefined,
+            undefined
         );
         callback(this.#selectedCmn);
       })
@@ -136,6 +145,37 @@ export default class Model {
         console.error("Erreur :", error);
       });
   };
+
+  loadEphemerid = (callBack, ephemeridDatas, cmnInsee) => {
+    console.log("model : load ephemerid");
+    console.log("model : cmnInsee :", cmnInsee);
+
+    const headers = new Headers();
+    //headers.append('Authorization', `Bearer ${this.#tokenMeteoConcept}`);
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    headers.append('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With');
+    //const url = `${this.#endPointMeteoConcept}/api/ephemeride/1?insee=${cmnInsee}`;
+    const url = `${this.#endPointMeteoConcept}/api/ephemeride/1?token=${this.#tokenMeteoConcept}&insee=${cmnInsee}`;
+    
+    fetch(url, {
+      headers: headers,
+      method: 'GET',
+    })
+    .then(response => response.json())
+    .then(data => {
+      this.#ephemeridDatas = data;
+      ephemeridDatas = data;
+      callBack(this.#ephemeridDatas);
+    })
+    .catch(error => {
+      console.error("error :", error);
+    });
+  }
+
+  loadMeteo = (callBack, ephemeridDatas, cmnInsee) => {
+      // https://api.meteo-concept.com/api/forecast/daily/0?token=MON_TOKEN&insee=35238
+  }
 
   /**
    * Getters et Setters.
@@ -194,5 +234,13 @@ export default class Model {
 
   set selectedCmn(newSelectedCmn) {
     this.#selectedCmn = newSelectedCmn;
+  }
+
+  get isMeteoDivOpened() {
+    return this.#isMeteoDivOpened;
+  }
+
+  set isMeteoDivOpened(newValue) {
+    this.#isMeteoDivOpened = newValue;
   }
 }
