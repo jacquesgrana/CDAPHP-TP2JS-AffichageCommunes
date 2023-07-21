@@ -346,7 +346,7 @@ sunset: "21:27"
 
     const buttonMeteo = createMarkup(
       "button",
-      "Afficher des données supplémentaires",
+      "Afficher les données supplémentaires",
       divMeteo,
       [
         { class: "btn btn-warning mt-4 px-4" },
@@ -360,9 +360,9 @@ sunset: "21:27"
     console.log("view 350 : appel fonction toggleBtn");
     const btnMeteo = document.getElementById("btn-meteo");
     if (isMeteoDivOpened) {
-      btnMeteo.textContent = "Masquer données supplémentaires";
+      btnMeteo.textContent = "Masquer les données supplémentaires";
     } else {
-      btnMeteo.textContent = "Afficher des données supplémentaires";
+      btnMeteo.textContent = "Afficher les données supplémentaires";
     }
   };
 }
