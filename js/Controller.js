@@ -68,10 +68,11 @@ export default class Controller {
                 this.#view.resetSelectCmn();
                 this.#view.resetDisplayedCmn();
                 this.#view.resetDisplayMeteo();
+                // TODO faire test sur region (si dom-tom ou pas) pour mettre un booleen du modele a false si dom-tom
+                this.#model.isNotDomTom = this.getIsNotDomTom(this.#model.selectedRegCode);
                 this.#model.loadDpts(this.fillSelectDpt, this.#model.selectedRegCode);
             }
             else {
-                console.log("controller : région non choisie :", this.#model.selectedRegCode);
                 this.#view.resetSelectDpt();
                 this.#view.resetSelectCmn();
                 this.#view.resetDisplayedCmn();
@@ -89,7 +90,6 @@ export default class Controller {
                 this.#model.loadCmns(this.fillSelectCmn, this.#model.selectedDptCode);
             }
             else {
-                console.log("controller : dpt non choisi :", this.#model.selectedDptCode);
                 this.#view.resetSelectCmn();
                 this.#view.resetDisplayedCmn();
                 this.#view.resetDisplayMeteo();
@@ -102,6 +102,9 @@ export default class Controller {
                 this.#model.loadCmnToDisplay(this.displaySelectedCmn, this.#model.selectedCmnCode);
                 this.#view.resetMeteoDivIfnotEmpty();
                 //this.#view.toggleBtnMeteoText();
+                // TODO si booleen a faux => bloquer bouton
+                //console.log("controller 107 : this.#model.isNotDomTom :", this.#model.isNotDomTom);
+                //if(!this.#model.isNotDomTom) this.#view.disableMeteo();
             }
             else {
                 this.#view.resetDisplayedCmn();
@@ -111,10 +114,20 @@ export default class Controller {
     }
   }
 
+  getIsNotDomTom = (regionCode) => {
+    let toReturn = true;
+    // TODO faire la logique selon les code regions des domtom
+    if(regionCode === "01" || regionCode === "02" || regionCode === "03" || regionCode === "04" || regionCode === "06") {
+      toReturn = false;
+    }
+    else {
+      toReturn = true;
+    }
+    return toReturn;
+  }
+
   clickBtnMeteo = (event) => {
-    console.log("controller 113 : clic bouton météo");
     event.preventDefault;
-    console.log("controller 115 : this.#model.isMeteoDivOpened :", this.#model.isMeteoDivOpened);
     if(this.#model.isMeteoDivOpened) {
       this.#model.isMeteoDivOpened = false;
       this.#view.resetDisplayMeteo();
@@ -139,6 +152,8 @@ export default class Controller {
    */
   displaySelectedCmn = (cmnToDisplay) => {
     this.#view.renderSelectedCmn(cmnToDisplay, this.clickBtnMeteo);
+    if(!this.#model.isNotDomTom) this.#view.disableMeteo();
+
   }
 
   displayEphemerid = (ephemeridDatas) => {
@@ -146,8 +161,6 @@ export default class Controller {
     this.#model.selectedCmn.latitude = ephemeridDatas.city.latitude;
     this.#model.selectedCmn.longitude = ephemeridDatas.city.longitude;
     this.#model.selectedCmn.altitude = ephemeridDatas.city.altitude;
-    
-    console.log("controller : affichage de l'ephemeride");
     this.#view.renderEphemerid(ephemeridDatas);
     /*
     this.#view.renderBtnMeteo();

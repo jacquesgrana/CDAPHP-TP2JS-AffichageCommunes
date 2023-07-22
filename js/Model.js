@@ -12,7 +12,6 @@ export default class Model {
   #endPointGeoApi = "https://geo.api.gouv.fr";
   #endPointMeteoConcept = "https://api.meteo-concept.com";
   #tokenMeteoConcept = "06a3e3f2f54d0caa80e3915bca02c559b6d425804cd52155164e57c6d48bd43e";
-
   #selectedRegCode;
   #selectedDptCode;
   #selectedCmnCode;
@@ -21,6 +20,7 @@ export default class Model {
   #ephemeridDatas = {};
   #meteoDatas = {};
   #isMeteoDivOpened = false;
+  #isNotDomTom = true;
 
   constructor() {
   }
@@ -120,7 +120,7 @@ export default class Model {
    * Méthode qui récupère une commune d'un département par une requête et 
    * appelle la fonction de callback qui rempli la div qui affiche la commune.
    * @param {function} callback : callback du controleur.
-   * @param {number} code : code de la commune.
+   * @param {number} code : code insee de la commune.
    */
   loadCmnToDisplay = (callback, code) => {
     this.#selectedCmnCode = code;
@@ -147,10 +147,14 @@ export default class Model {
       });
   };
 
+  /**
+   * Méthode qui récupère l'éphéméride depuis l'api de meteo concept suivant 
+   * le code insee de la commune et le stocke dans le modèle.
+   * @param {*} callBack : callback du controleur.
+   * @param {*} ephemeridDatas : données à mettre à jour ************** garder?
+   * @param {*} cmnInsee : code insee de la commune
+   */
   loadEphemerid = (callBack, ephemeridDatas, cmnInsee) => {
-    console.log("model 150 : load ephemerid");
-    console.log("model 151 : cmnInsee :", cmnInsee);
-
     const headers = new Headers();
     //headers.append('Authorization', `Bearer ${this.#tokenMeteoConcept}`);
     headers.append('Access-Control-Allow-Origin', '*');
@@ -174,9 +178,15 @@ export default class Model {
     });
   }
 
+  /**
+   * Méthode qui récupère l'éphéméride depuis l'api de meteo concept suivant 
+   * le code insee de la commune et le stocke dans le modèle.
+   * @param {*} callBack 
+   * @param {*} meteoDatas 
+   * @param {*} cmnInsee 
+   */
   loadMeteo = (callBack, meteoDatas, cmnInsee) => {
       // https://api.meteo-concept.com/api/forecast/daily/0?token=MON_TOKEN&insee=35238
-    console.log("model 178 : load météo");
     const headers = new Headers();
     //headers.append('Authorization', `Bearer ${this.#tokenMeteoConcept}`);
     headers.append('Access-Control-Allow-Origin', '*');
@@ -281,5 +291,13 @@ export default class Model {
 
   set isMeteoDivOpened(newValue) {
     this.#isMeteoDivOpened = newValue;
+  }
+
+  get isNotDomTom() {
+    return this.#isNotDomTom;
+  }
+
+  set isNotDomTom(newValue) {
+    this.#isNotDomTom = newValue;
   }
 }

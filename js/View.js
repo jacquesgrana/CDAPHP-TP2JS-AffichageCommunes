@@ -216,7 +216,6 @@ export default class View {
   };
 
   renderEphemerid = (ephemeridDatas) => {
-    console.log("view : render ephemerid datas : ", ephemeridDatas);
     const divMeteo = document.getElementById("div-meteo");
     //console.log("view 220 : divMeteo.innerHTML :", divMeteo.innerHTML);
     divMeteo.innerHTML = "";
@@ -300,7 +299,6 @@ export default class View {
   }
 
   renderMeteo = (meteoDatas) => {
-    console.log("view 303 : render meteo datas : ", meteoDatas);
     const divMeteo = document.getElementById("div-meteo");
     //console.log("view 220 : divMeteo.innerHTML :", divMeteo.innerHTML);
     //divMeteo.innerHTML = "";
@@ -449,8 +447,6 @@ export default class View {
 
   renderBtnMeteo = () => {
     const divMeteo = document.getElementById("div-meteo");
-    //console.log('view : divMeteo.innerHTML', divMeteo.innerHTML.toString());
-
     const buttonMeteo = createMarkup(
       "button",
       "Afficher les données supplémentaires",
@@ -464,7 +460,6 @@ export default class View {
   };
 
   toggleBtnMeteoText = (isMeteoDivOpened) => {
-    console.log("view 350 : appel fonction toggleBtn");
     const btnMeteo = document.getElementById("btn-meteo");
     if (isMeteoDivOpened) {
       btnMeteo.textContent = "Masquer les données supplémentaires";
