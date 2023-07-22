@@ -41,3 +41,16 @@ select.select-class {
     justify-content: center;
     align-items: start;
 }
+
+.link-footer {
+    text-decoration: none;
+}
+
+.link-footer:hover {
+    text-decoration: underline;
+    color: white !important;
+}
+
+.text-footer, .link-footer {
+    font-size: small;
+}
