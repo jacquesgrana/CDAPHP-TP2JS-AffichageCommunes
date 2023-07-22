@@ -39,8 +39,9 @@ export default class Model {
   };
 
   /**
-   * Méthode qui récupère la liste des régions par une requête et appelle la fonction
-   * de callback qui rempli le select correspondant à partir des données récupérées.
+   * Méthode qui récupère la liste des régions par une requête sur geo.api.gouv.fr 
+   * et appelle la fonction de callback qui remplie le select correspondant à partir 
+   * des données récupérées.
    * @param {function} fillSelectReg : callback du controleur.
    */
   loadRegs = (fillSelectReg) => {
@@ -63,9 +64,9 @@ export default class Model {
   };
 
   /**
-   * Méthode qui récupère la liste des départements d'une reqion par une requête et 
-   * appelle la fonction de callback qui rempli le select correspondant à partir des 
-   * données récupérées.
+   * Méthode qui récupère la liste des départements d'une reqion par une requête sur 
+   * geo.api.gouv.fr et appelle la fonction de callback qui rempli le select correspondant 
+   * à partir des données récupérées.
    * @param {function} fillSelectDpt : callback du controleur.
    * @param {number} codeReg : code de la région.
    */
@@ -89,9 +90,9 @@ export default class Model {
   };
 
   /**
-   * Méthode qui récupère la liste des communes d'un département par une requête et 
-   * appelle la fonction de callback qui rempli le select correspondant à partir des 
-   * données récupérées.
+   * Méthode qui récupère la liste des communes d'un département par une requête sur
+   * geo.api.gouv.fr et appelle la fonction de callback qui rempli le select correspondant 
+   * à partir des données récupérées.
    * @param {function} fillSelectCmn : callback du controleur.
    * @param {number} codeDpt : code du département.
    */
@@ -117,8 +118,9 @@ export default class Model {
   };
 
    /**
-   * Méthode qui récupère une commune d'un département par une requête et 
-   * appelle la fonction de callback qui rempli la div qui affiche la commune.
+   * Méthode qui récupère une commune d'un département par une requête sur 
+   * geo.api.gouv.fr et appelle la fonction de callback qui rempli la div 
+   * qui affiche la commune.
    * @param {function} callback : callback du controleur.
    * @param {number} code : code insee de la commune.
    */
@@ -148,7 +150,7 @@ export default class Model {
   };
 
   /**
-   * Méthode qui récupère l'éphéméride depuis l'api de meteo concept suivant 
+   * Méthode qui récupère l'éphéméride depuis api.meteo-concept.com suivant 
    * le code insee de la commune et le stocke dans le modèle.
    * @param {*} callBack : callback du controleur.
    * @param {*} ephemeridDatas : données à mettre à jour ************** garder?
@@ -179,7 +181,7 @@ export default class Model {
   }
 
   /**
-   * Méthode qui récupère l'éphéméride depuis l'api de meteo concept suivant 
+   * Méthode qui récupère l'éphéméride depuis api.meteo-concept.com suivant 
    * le code insee de la commune et le stocke dans le modèle.
    * @param {*} callBack 
    * @param {*} meteoDatas 

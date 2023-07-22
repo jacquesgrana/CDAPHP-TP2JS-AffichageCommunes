@@ -297,6 +297,7 @@ static getWeatherNameByCode = (code) => {
 5	Couvert
 6	Brouillard
 7	Brouillard givrant
+
 10	Pluie faible
 11	Pluie modérée
 12	Pluie forte
@@ -304,6 +305,7 @@ static getWeatherNameByCode = (code) => {
 14	Pluie modérée verglaçante
 15	Pluie forte verglaçante
 16	Bruine
+
 20	Neige faible
 21	Neige modérée
 22	Neige forte
@@ -311,6 +313,7 @@ static getWeatherNameByCode = (code) => {
 30	Pluie et neige mêlées faibles
 31	Pluie et neige mêlées modérées
 32	Pluie et neige mêlées fortes
+
 40	Averses de pluie locales et faibles
 41	Averses de pluie locales
 42	Averses locales et fortes
