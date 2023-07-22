@@ -1,5 +1,10 @@
 export default class WeatherLib {
 
+  /**
+   * Méthode qui renvoit la description du temps 'sensible' selon le code passé en paramètre.
+   * @param {number} code : code du temps 'sensible' prévu.
+   * @returns {string} : description ccorrespondante.
+   */
 static getWeatherNameByCode = (code) => {
   let toReturn = "";
   switch (code) {

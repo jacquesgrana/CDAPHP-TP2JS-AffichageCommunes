@@ -114,6 +114,11 @@ export default class Controller {
     }
   }
 
+  /**
+   * Méthode qui renvoie vrai si la région est métropolitaine, faux si dom-tom.
+   * @param {string} regionCode 
+   * @returns 
+   */
   getIsNotDomTom = (regionCode) => {
     let toReturn = true;
     // TODO faire la logique selon les code regions des domtom
@@ -126,6 +131,10 @@ export default class Controller {
     return toReturn;
   }
 
+  /**
+   * Méthode qui gère l'événement click sur le bouton qui affiche des données supplémentaires.
+   * @param {event} event 
+   */
   clickBtnMeteo = (event) => {
     event.preventDefault;
     if(this.#model.isMeteoDivOpened) {
@@ -156,6 +165,10 @@ export default class Controller {
 
   }
 
+  /**
+   * Méthode qui lance l'affichage de l'éphéméride.
+   * @param {json} ephemeridDatas : données à afficher.
+   */
   displayEphemerid = (ephemeridDatas) => {
     //this.#model.ephemeridDatas = ephemeridDatas;
     this.#model.selectedCmn.latitude = ephemeridDatas.city.latitude;
@@ -168,6 +181,10 @@ export default class Controller {
     this.#view.createClickListenerMeteoBtn(this.clickBtnMeteo);*/
   }
 
+  /**
+   * Méthode qui lance l'affichage de l'éphéméride.
+   * @param {json} meteoDatas : données à afficher.
+   */
   displayMeteo = (meteoDatas) => {
     this.#view.renderMeteo(meteoDatas);
     this.#view.renderBtnMeteo();

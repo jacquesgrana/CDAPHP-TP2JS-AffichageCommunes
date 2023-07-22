@@ -152,9 +152,9 @@ export default class Model {
   /**
    * Méthode qui récupère l'éphéméride depuis api.meteo-concept.com suivant 
    * le code insee de la commune et le stocke dans le modèle.
-   * @param {*} callBack : callback du controleur.
-   * @param {*} ephemeridDatas : données à mettre à jour ************** garder?
-   * @param {*} cmnInsee : code insee de la commune
+   * @param {function} callBack : callback du controleur.
+   * @param {json} ephemeridDatas : données à mettre à jour ************** garder?
+   * @param {string} cmnInsee : code insee de la commune
    */
   loadEphemerid = (callBack, ephemeridDatas, cmnInsee) => {
     const headers = new Headers();
@@ -183,9 +183,9 @@ export default class Model {
   /**
    * Méthode qui récupère l'éphéméride depuis api.meteo-concept.com suivant 
    * le code insee de la commune et le stocke dans le modèle.
-   * @param {*} callBack 
-   * @param {*} meteoDatas 
-   * @param {*} cmnInsee 
+   * @param {function} callBack 
+   * @param {json} meteoDatas 
+   * @param {string} cmnInsee 
    */
   loadMeteo = (callBack, meteoDatas, cmnInsee) => {
       // https://api.meteo-concept.com/api/forecast/daily/0?token=MON_TOKEN&insee=35238

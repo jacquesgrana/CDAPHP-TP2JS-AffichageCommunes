@@ -98,7 +98,7 @@ export default class View {
   };
 
   /**
-   * Méthode qui créé les listeners de l'événement "change" sur les trois select.
+   * Méthode qui créé les listeners sur l'événement "change" sur les trois select.
    * @param {function} callBack : callback du controleur.
    */
   createOnChangeListeners = (callBack) => {
@@ -110,6 +110,10 @@ export default class View {
     selectCmn.addEventListener("change", (event) => callBack("Cmn", event));
   };
 
+  /**
+   * Méthode qui créé un listener sur l'événement "click" sur le bouton.
+   * @param {*} callBack : callback du controleur.
+   */
   createClickListenerMeteoBtn = (callBack) => {
     const divMeteo = document.getElementById("div-meteo");
     if (divMeteo.innerHTML !== "") {
@@ -119,7 +123,7 @@ export default class View {
   };
 
   /**
-   * Méthode qui rempli le select des régions avec les options issues du tableau "regs".
+   * Méthode qui remplit le select des régions avec les options issues du tableau "regs".
    * @param {[Reg]} regs
    */
   fillAndRenderSelectReg = (regs) => {
@@ -137,7 +141,7 @@ export default class View {
   };
 
   /**
-   * Méthode qui rempli le select des départements avec les options issues du tableau "dpts".
+   * Méthode qui remplit le select des départements avec les options issues du tableau "dpts".
    * @param {[Dpt]} dpts
    */
   fillAndRenderSelectDpt = (dpts) => {
@@ -155,7 +159,7 @@ export default class View {
   };
 
   /**
-   * Méthode qui rempli le select des communes avec les options issues du tableau "cmns".
+   * Méthode qui remplit le select des communes avec les options issues du tableau "cmns".
    * @param {[Cmn]} cmns
    */
   fillAndRenderSelectCmn = (cmns) => {
@@ -199,7 +203,7 @@ export default class View {
 
   /**
    * Méthode qui affiche la commune "cmn" dans la div du bas qui affiche la commune choisie.
-   * @param {Cmn} cmn
+   * @param {Cmn} cmn : commune à afficher.
    */
   renderSelectedCmn = (cmn, callBack) => {
     const cmnName = document.getElementById("cmn-name");
@@ -215,6 +219,10 @@ export default class View {
     this.enableMeteo();
   };
 
+  /**
+   * Méthode qui affiche l'éphéméride selon les données de ephemeridDatas.
+   * @param {json} ephemeridDatas : données à afficher.
+   */
   renderEphemerid = (ephemeridDatas) => {
     const divMeteo = document.getElementById("div-meteo");
     //console.log("view 220 : divMeteo.innerHTML :", divMeteo.innerHTML);
@@ -298,6 +306,10 @@ export default class View {
     );
   }
 
+  /**
+   * Méthode qui affiche la météo selon les données de meteoDatas.
+   * @param {json} meteoDatas : données à afficher.
+   */
   renderMeteo = (meteoDatas) => {
     const divMeteo = document.getElementById("div-meteo");
     //console.log("view 220 : divMeteo.innerHTML :", divMeteo.innerHTML);
@@ -425,26 +437,41 @@ export default class View {
     this.disableMeteo();
   };
 
+  /**
+   * Méthode qui active le bouton.
+   */
   enableMeteo = () => {
     const btnMeteo = document.getElementById("btn-meteo");
     if (btnMeteo) btnMeteo.removeAttribute("disabled");
   };
 
+  /**
+   * Méthode qui désactive le bouton.
+   */
   disableMeteo = () => {
     const btnMeteo = document.getElementById("btn-meteo");
     if (btnMeteo) btnMeteo.setAttribute("disabled", true);
   };
 
+  /**
+   * Méthode qui efface le contenu de la div 'div-meteo'.
+   */
   resetDisplayMeteo = () => {
     const divMeteo = document.getElementById("div-meteo");
     divMeteo.innerHTML = "";
   };
 
+  /**
+   * Méthode qui efface le contenu de la div 'div-meteo' s'il n'est pas vide.
+   */
   resetMeteoDivIfnotEmpty = () => {
     const divMeteo = document.getElementById("div-meteo");
     if (divMeteo.innerHTML) this.resetDisplayMeteo();
   };
 
+  /**
+   * Méthode qui ajoute le bouton au dom.
+   */
   renderBtnMeteo = () => {
     const divMeteo = document.getElementById("div-meteo");
     const buttonMeteo = createMarkup(
@@ -459,6 +486,10 @@ export default class View {
     );
   };
 
+  /**
+   * Méthode qui modifie le texte du bouton en fonction du booléen 'isMeteoDivOpened'.
+   * @param {boolean} isMeteoDivOpened 
+   */
   toggleBtnMeteoText = (isMeteoDivOpened) => {
     const btnMeteo = document.getElementById("btn-meteo");
     if (isMeteoDivOpened) {
