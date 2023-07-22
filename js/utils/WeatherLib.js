@@ -89,7 +89,7 @@ static getWeatherNameByCode = (code) => {
       toReturn = "Averses de pluie fortes";
       break;
     case 46:
-      toReturn = "verses de pluie faibles et fréquentes";
+      toReturn = "Averses de pluie faibles et fréquentes";
       break;
     case 47:
       toReturn = "Averses de pluie fréquentes";
@@ -161,7 +161,7 @@ static getWeatherNameByCode = (code) => {
       toReturn = "Orages locaux";
       break;
     case 102:
-      toReturn = "	Orages fort et locaux";
+      toReturn = "Orages forts et locaux";
       break;
     case 103:
       toReturn = "Orages faibles";
@@ -183,10 +183,10 @@ static getWeatherNameByCode = (code) => {
       break;
 
     case 120:
-      toReturn = "Orages faibles et locaux";
+      toReturn = "Orages faibles et locaux de neige ou grésil";
       break;
     case 121:
-      toReturn = "Orages locaux";
+      toReturn = "Orages locaux de neige ou grésil";
       break;
     case 122:
       toReturn = "Orages forts et locaux de neige ou grésil";
@@ -223,14 +223,13 @@ static getWeatherNameByCode = (code) => {
       toReturn = "Orages faibles de pluie et neige mêlées ou grésil";
       break;
     case 134:
-      toReturn = "rages de pluie et neige mêlées ou grésil";
+      toReturn = "Orages de pluie et neige mêlées ou grésil";
       break;
     case 135:
       toReturn = "Orages forts de pluie et neige mêlées ou grésil";
       break;
     case 136:
-      toReturn =
-        "Orages faibles et fréquents de pluie et neige mêlées ou grésil";
+      toReturn = "Orages faibles et fréquents de pluie et neige mêlées ou grésil";
       break;
     case 137:
       toReturn = "Orages fréquents de pluie et neige mêlées ou grésil";
