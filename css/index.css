@@ -54,3 +54,35 @@ select.select-class {
 .text-footer, .link-footer {
     font-size: small;
 }
+
+#icon-meteo {
+   font-size: xx-large;
+}
+
+.cold-temp {
+    color :rgb(199, 229, 255);
+}
+
+.little-cold-temp {
+    color :rgb(83, 174, 253);
+}
+
+.temp-temp {
+    color :rgb(43, 204, 84);
+}
+
+.little-hot-temp {
+    color :rgb(211, 233, 17);
+}
+
+.hot-temp {
+    color :rgb(250, 190, 27);
+}
+
+.very-hot-temp {
+    color :rgb(248, 57, 32);
+}
+
+.too-hot-temp {
+    color :rgb(212, 13, 186);
+}

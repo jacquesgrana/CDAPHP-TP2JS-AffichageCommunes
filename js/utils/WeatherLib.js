@@ -293,7 +293,7 @@ static getWeatherNameByCode = (code) => {
 
 //wi-night-sleet
 
-static getWeatherIconByCode = (code) => {
+static getWeatherIconClassByCode = (code) => {
   let toReturn = "";
   if(code === 0) {
     toReturn = "wi-day-sunny";
@@ -351,6 +351,32 @@ static getWeatherIconByCode = (code) => {
   }
   else {
     toReturn = "wi-meteor"; //
+  }
+  return toReturn;
+}
+
+static getColorClassByTemps = (min, max) => {
+  let toReturn = "";
+  const temp = (min + max) / 2;
+  if(temp < 0) {
+    toReturn = "cold-temp";
+  }
+  else if(temp >= 0 && temp < 10) {
+    toReturn = "little-cold-temp";
+  }
+  else if(temp >= 10 && temp < 20) {
+    toReturn = "temp-temp";
+  }
+  else if(temp >= 20 && temp < 25) {
+    toReturn = "little-hot-temp";
+  }
+  else if(temp >= 25 && temp < 30) {
+    toReturn = "hot-temp";
+  }
+  else if(temp >= 30 && temp < 35) {
+    toReturn = "very-hot-temp";
+  } else {
+    toReturn = "too-hot-temp";
   }
   return toReturn;
 }

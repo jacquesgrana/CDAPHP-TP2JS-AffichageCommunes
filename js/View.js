@@ -317,9 +317,10 @@ export default class View {
     const titleMeteo = createMarkup("h5", `Données météorologiques `, divMeteo, [
       { class: "mt-3 mb-3 text-warning" },
     ]);
-    const iconWeather = createMarkup("i", "", titleMeteo, [{class:"wi text-white"}]); //<i class="wi wi-night-sleet"></i>
-    iconWeather.classList.add(WeatherLib.getWeatherIconByCode(meteoDatas.forecast.weather));
-    // *************************************************************************************************************************************************************
+    const iconWeather = createMarkup("i", "", titleMeteo, [{class:"wi"}, {id: "icon-meteo"}]); //<i class="wi wi-night-sleet"></i>
+    iconWeather.classList.add(WeatherLib.getWeatherIconClassByCode(meteoDatas.forecast.weather));
+    iconWeather.classList.add(WeatherLib.getColorClassByTemps(meteoDatas.forecast.tmin, meteoDatas.forecast.tmax));
+    // getColorClassByTemps*************************************************************************************************************************************************************
     const divMeteoMeteo = createMarkup("div", "", divMeteo, [
       {
         class: "d-flex justify-content-center flex-column align-items-start",
