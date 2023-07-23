@@ -290,7 +290,74 @@ static getWeatherNameByCode = (code) => {
   return toReturn;
 };
 
+
+//wi-night-sleet
+
+static getWeatherIconByCode = (code) => {
+  let toReturn = "";
+  if(code === 0) {
+    toReturn = "wi-day-sunny";
+  }
+  else if(code === 1 || code === 2 || code === 3) {
+    toReturn = "wi-cloud";
+  }
+  else if(code === 4 || code === 5) {
+    toReturn = "wi-cloudy";
+  }
+  else if(code === 6 || code === 7) {
+    toReturn = "wi-fog";
+  }
+  else if(code >= 10 && code <= 16) {
+    toReturn = "wi-rain";
+  }
+  else if(code >= 20 && code <= 22) {
+    toReturn = "wi-snow";
+  }
+  else if(code >= 30 && code <= 32) {
+    toReturn = "wi-rain-mix";
+  }
+  else if(code >= 40 && code <= 48) {
+    toReturn = "wi-showers";
+  }
+  else if(code >= 60 && code <= 68) {
+    toReturn = "wi-snow";
+  }
+  else if(code >= 70 && code <= 78) {
+    toReturn = "wi-rain-mix";
+  }
+  else if(code >= 100 && code <= 108) {
+    toReturn = "wi-storm-showers";
+  }
+  else if(code >= 120 && code <= 128) {
+    toReturn = "wi-thunderstorm";
+  }
+  else if(code >= 130 && code <= 138) {
+    toReturn = "wi-thunderstorm";
+  }
+  else if(code >= 140 && code <= 142) {
+    toReturn = "wi-thunderstorm";
+  }
+  else if(code >= 210 && code <= 212) {
+    toReturn = "wi-sprinkle";
+  }
+  else if(code >= 220 && code <= 222) {
+    toReturn = "wi-snow";
+  }
+  else if(code >= 230 && code <= 232) {
+    toReturn = "wi-rain-mix";
+  }
+  else if(code === 235) {
+    toReturn = "wi-hail";
+  }
+  else {
+    toReturn = "wi-meteor"; //
+  }
+  return toReturn;
 }
+
+}
+
+
 
 /*
 0	Soleil

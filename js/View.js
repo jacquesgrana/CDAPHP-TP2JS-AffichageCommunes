@@ -314,9 +314,12 @@ export default class View {
     const divMeteo = document.getElementById("div-meteo");
     //console.log("view 220 : divMeteo.innerHTML :", divMeteo.innerHTML);
     //divMeteo.innerHTML = "";
-    const titleMeteo = createMarkup("h5", "Données météorologiques", divMeteo, [
+    const titleMeteo = createMarkup("h5", `Données météorologiques `, divMeteo, [
       { class: "mt-3 mb-3 text-warning" },
     ]);
+    const iconWeather = createMarkup("i", "", titleMeteo, [{class:"wi text-white"}]); //<i class="wi wi-night-sleet"></i>
+    iconWeather.classList.add(WeatherLib.getWeatherIconByCode(meteoDatas.forecast.weather));
+    // *************************************************************************************************************************************************************
     const divMeteoMeteo = createMarkup("div", "", divMeteo, [
       {
         class: "d-flex justify-content-center flex-column align-items-start",
@@ -325,10 +328,12 @@ export default class View {
     const weather = createMarkup("p", "Temps : ", divMeteoMeteo, [{class: "mx-4"}]);
     const spanWeather = createMarkup(
       "span",
-      `${WeatherLib.getWeatherNameByCode(meteoDatas.forecast.weather)}`,
+      `${WeatherLib.getWeatherNameByCode(meteoDatas.forecast.weather)} `,
       weather,
       [{ class: "text-warning" }, { id: "weather" }]
     );
+    
+
     const tempMin = createMarkup("p", "Température min. (°C) : ", divMeteoMeteo, [{class: "mx-4"}]);
     const spanTempMin = createMarkup(
       "span",
