@@ -1,88 +1,96 @@
 body {
-    background-color: hsl(204, 72%, 21%) !important;
+  background-color: hsl(204, 72%, 21%) !important;
 }
 
 #container-inputs {
-    width: 600px;
-    min-height: 600px;
-    padding: 40px;
-    margin-left: auto;
-    margin-right: auto;
-
+  width: 600px;
+  min-height: 600px;
+  padding: 40px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #div-result {
-    min-height: 300px;
-    padding: 40px;
+  min-height: 300px;
+  padding: 40px;
 }
 
 select.select-class {
-    outline: none !important;
-    background-color: hsl(204, 72%, 21%) !important;
-    border: solid thin rgb(230, 196, 47) !important;
+  outline: none !important;
+  background-color: hsl(204, 72%, 21%) !important;
+  border: solid thin rgb(230, 196, 47) !important;
 
-    outline : none;
-    overflow : hidden;
-    text-indent : 0.01px;
-    text-overflow : '';
-    -webkit-appearance: none;
-       -moz-appearance: none;
-        -ms-appearance: none;
-         -o-appearance: none;
-            appearance: none;
-
+  outline: none;
+  overflow: hidden;
+  text-indent: 0.01px;
+  text-overflow: "";
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
 }
 
+footer {
+    width: 100%;
+}
+
+
+
 #div-meteo {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
 }
 
 .link-footer {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .link-footer:hover {
-    text-decoration: underline;
-    color: white !important;
+  text-decoration: underline;
+  color: white !important;
 }
 
-.text-footer, .link-footer {
-    font-size: small;
+.text-footer,
+.link-footer {
+  font-size: small;
+  margin-top: 0;
+  margin-bottom: 20px;
 }
 
 #icon-meteo {
-   font-size: xx-large;
+  font-size: xx-large;
 }
 
 .cold-temp {
-    color :rgb(199, 229, 255);
+  color: rgb(199, 229, 255);
 }
 
 .little-cold-temp {
-    color :rgb(83, 174, 253);
+  color: rgb(83, 174, 253);
 }
 
 .temp-temp {
-    color :rgb(43, 204, 84);
+  color: rgb(43, 204, 84);
 }
 
 .little-hot-temp {
-    color :rgb(211, 233, 17);
+  color: rgb(211, 233, 17);
 }
 
 .hot-temp {
-    color :rgb(250, 190, 27);
+  color: rgb(250, 190, 27);
 }
 
 .very-hot-temp {
-    color :rgb(248, 57, 32);
+  color: rgb(248, 57, 32);
 }
 
 .too-hot-temp {
-    color :rgb(212, 13, 186);
+  color: rgb(212, 13, 186);
 }
+

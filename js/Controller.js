@@ -172,7 +172,13 @@ export default class Controller {
     //if(!this.#model.isNotDomTom) this.#view.disableMeteo();
     if(this.#model.isNotDomTom) {
       this.#model.loadEphemerid(this.displayEphemerid, this.#model.ephemeridDatas, this.#model.selectedCmnCode);
-      this.#model.loadMeteo(this.displayMeteo, this.#model.meteoDatas, this.#model.selectedCmnCode);
+      
+      // TODO faire pause de 0.5 sec
+
+      setTimeout(() => {
+        this.#model.loadMeteo(this.displayMeteo, this.#model.meteoDatas, this.#model.selectedCmnCode);
+      }, 500);
+      
     }
   }
 

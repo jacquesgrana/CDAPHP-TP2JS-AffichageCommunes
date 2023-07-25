@@ -157,7 +157,7 @@ export default class Model {
    * @param {string} cmnInsee : code insee de la commune
    */
   loadEphemerid = (callBack, ephemeridDatas, cmnInsee) => {
-    console.log("model 160 : load ephemerid");
+    //console.log("model 160 : load ephemerid");
     const headers = new Headers();
     //headers.append('Authorization', `Bearer ${this.#tokenMeteoConcept}`);
     headers.append('Access-Control-Allow-Origin', '*');
@@ -189,7 +189,7 @@ export default class Model {
    * @param {string} cmnInsee 
    */
   loadMeteo = (callBack, meteoDatas, cmnInsee) => {
-    console.log("model 191 : load meteo");
+    //console.log("model 191 : load meteo");
       // https://api.meteo-concept.com/api/forecast/daily/0?token=MON_TOKEN&insee=35238
     const headers = new Headers();
     //headers.append('Authorization', `Bearer ${this.#tokenMeteoConcept}`);
