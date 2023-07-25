@@ -100,7 +100,7 @@ export default class Controller {
             if(event.target.value != 'empty') {
                 this.#model.selectedCmnCode = event.target.value;
                 this.#model.loadCmnToDisplay(this.displaySelectedCmn, this.#model.selectedCmnCode);
-                this.#view.resetMeteoDivIfnotEmpty();
+                this.#view.resetDisplayMeteo();
                 //this.#view.toggleBtnMeteoText();
                 // TODO si booleen a faux => bloquer bouton
                 //console.log("controller 107 : this.#model.isNotDomTom :", this.#model.isNotDomTom);

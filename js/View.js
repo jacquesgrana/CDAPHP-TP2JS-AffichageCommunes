@@ -206,7 +206,7 @@ export default class View {
    * Méthode qui affiche la commune "cmn" dans la div du bas qui affiche la commune choisie.
    * @param {Cmn} cmn : commune à afficher.
    */
-  renderSelectedCmn = (cmn, callBack) => {
+  renderSelectedCmn = (cmn) => {
     const cmnName = document.getElementById("cmn-name");
     cmnName.innerHTML = cmn.nom;
     const cmnPop = document.getElementById("cmn-pop");
@@ -473,10 +473,11 @@ export default class View {
   /**
    * Méthode qui efface le contenu de la div 'div-meteo' s'il n'est pas vide.
    */
+  /*
   resetMeteoDivIfnotEmpty = () => {
     const divMeteo = document.getElementById("div-meteo");
     if (divMeteo.innerHTML) this.resetDisplayMeteo();
-  };
+  };*/
 
 
   /**
