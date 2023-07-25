@@ -114,13 +114,14 @@ export default class View {
    * Méthode qui créé un listener sur l'événement "click" sur le bouton.
    * @param {*} callBack : callback du controleur.
    */
+  /*
   createClickListenerMeteoBtn = (callBack) => {
     const divMeteo = document.getElementById("div-meteo");
     if (divMeteo.innerHTML !== "") {
       const buttonMeteo = document.getElementById("btn-meteo");
       buttonMeteo.addEventListener("click", (event) => callBack(event));
     }
-  };
+  };*/
 
   /**
    * Méthode qui remplit le select des régions avec les options issues du tableau "regs".
@@ -214,9 +215,9 @@ export default class View {
     cmnCp.innerHTML = +cmn.cp;
     const cmnInsee = document.getElementById("cmn-insee");
     cmnInsee.innerHTML = cmn.code; //cmn-insee
-    this.renderBtnMeteo();
-    this.createClickListenerMeteoBtn(callBack);
-    this.enableMeteo();
+    //this.renderBtnMeteo();
+    //this.createClickListenerMeteoBtn(callBack);
+    //this.enableMeteo();
   };
 
   /**
@@ -440,24 +441,26 @@ export default class View {
     document.getElementById("cmn-pop").innerHTML = "";
     document.getElementById("cmn-cp").innerHTML = "";
     document.getElementById("cmn-insee").innerHTML = "";
-    this.disableMeteo();
+    //this.disableMeteo();
   };
 
   /**
    * Méthode qui active le bouton.
    */
+  /*
   enableMeteo = () => {
     const btnMeteo = document.getElementById("btn-meteo");
     if (btnMeteo) btnMeteo.removeAttribute("disabled");
-  };
+  };*/
 
   /**
    * Méthode qui désactive le bouton.
    */
+  /*
   disableMeteo = () => {
     const btnMeteo = document.getElementById("btn-meteo");
     if (btnMeteo) btnMeteo.setAttribute("disabled", true);
-  };
+  };*/
 
   /**
    * Méthode qui efface le contenu de la div 'div-meteo'.
@@ -475,9 +478,11 @@ export default class View {
     if (divMeteo.innerHTML) this.resetDisplayMeteo();
   };
 
+
   /**
    * Méthode qui ajoute le bouton au dom.
    */
+  /*
   renderBtnMeteo = () => {
     const divMeteo = document.getElementById("div-meteo");
     const buttonMeteo = createMarkup(
@@ -490,12 +495,13 @@ export default class View {
         { type: "button" },
       ]
     );
-  };
+  };*/
 
   /**
    * Méthode qui modifie le texte du bouton en fonction du booléen 'isMeteoDivOpened'.
    * @param {boolean} isMeteoDivOpened 
    */
+  /*
   toggleBtnMeteoText = (isMeteoDivOpened) => {
     const btnMeteo = document.getElementById("btn-meteo");
     if (isMeteoDivOpened) {
@@ -503,5 +509,5 @@ export default class View {
     } else {
       btnMeteo.textContent = "Afficher les données supplémentaires";
     }
-  };
+  };*/
 }

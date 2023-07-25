@@ -135,34 +135,45 @@ export default class Controller {
    * Méthode qui gère l'événement click sur le bouton qui affiche des données supplémentaires.
    * @param {event} event 
    */
+/*
   clickBtnMeteo = (event) => {
+    console.log('controller 139 : clic bouton')
     event.preventDefault;
     if(this.#model.isMeteoDivOpened) {
-      this.#model.isMeteoDivOpened = false;
+     // this.#model.isMeteoDivOpened = false;
       this.#view.resetDisplayMeteo();
       this.#view.renderBtnMeteo();
-      this.#view.toggleBtnMeteoText(this.#model.isMeteoDivOpened);
-      this.#view.createClickListenerMeteoBtn(this.clickBtnMeteo);
+      //this.#view.toggleBtnMeteoText(this.#model.isMeteoDivOpened);
+      //this.#view.createClickListenerMeteoBtn(this.clickBtnMeteo);
       // TODO changer texte bouton
     }
     else {
-      this.#model.isMeteoDivOpened = true;
+      //this.#model.isMeteoDivOpened = true;
       this.#model.loadEphemerid(this.displayEphemerid, this.#model.ephemeridDatas, this.#model.selectedCmnCode);
-      this.#model.loadMeteo(this.displayMeteo, this.#model.meteoDatas, this.#model.selectedCmnCode)
+      this.#model.loadMeteo(this.displayMeteo, this.#model.meteoDatas, this.#model.selectedCmnCode);
       // TODO changer texte bouton
     }
     this.#view.toggleBtnMeteoText(this.#model.isMeteoDivOpened);
     
-  }
+  }*/
 
   /**
    * Méthode qui fait afficher à la vue la commune "cmn".
    * @param {Cmn} cmnToDisplay 
    */
   displaySelectedCmn = (cmnToDisplay) => {
-    this.#view.renderSelectedCmn(cmnToDisplay, this.clickBtnMeteo);
-    if(!this.#model.isNotDomTom) this.#view.disableMeteo();
-
+    this.#view.renderSelectedCmn(cmnToDisplay);
+    // TODO afficher les deux 
+    /*
+    this.#model.loadEphemerid(this.displayEphemerid, this.#model.ephemeridDatas, this.#model.selectedCmnCode);
+      this.#model.loadMeteo(this.displayMeteo, this.#model.meteoDatas, this.#model.selectedCmnCode);
+  
+    */
+    //if(!this.#model.isNotDomTom) this.#view.disableMeteo();
+    if(this.#model.isNotDomTom) {
+      this.#model.loadEphemerid(this.displayEphemerid, this.#model.ephemeridDatas, this.#model.selectedCmnCode);
+      this.#model.loadMeteo(this.displayMeteo, this.#model.meteoDatas, this.#model.selectedCmnCode);
+    }
   }
 
   /**
@@ -187,9 +198,9 @@ export default class Controller {
    */
   displayMeteo = (meteoDatas) => {
     this.#view.renderMeteo(meteoDatas);
-    this.#view.renderBtnMeteo();
-    this.#view.toggleBtnMeteoText(this.#model.isMeteoDivOpened);
-    this.#view.createClickListenerMeteoBtn(this.clickBtnMeteo);
+    //this.#view.renderBtnMeteo();
+    //this.#view.toggleBtnMeteoText(this.#model.isMeteoDivOpened);
+    //this.#view.createClickListenerMeteoBtn(this.clickBtnMeteo);
   }
   
 
