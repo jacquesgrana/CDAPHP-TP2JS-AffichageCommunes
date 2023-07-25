@@ -68,7 +68,6 @@ export default class Controller {
                 this.#view.resetSelectCmn();
                 this.#view.resetDisplayedCmn();
                 this.#view.resetDisplayMeteo();
-                // TODO faire test sur region (si dom-tom ou pas) pour mettre un booleen du modele a false si dom-tom
                 this.#model.isNotDomTom = this.getIsNotDomTom(this.#model.selectedRegCode);
                 this.#model.loadDpts(this.fillSelectDpt, this.#model.selectedRegCode);
             }
@@ -101,10 +100,6 @@ export default class Controller {
                 this.#model.selectedCmnCode = event.target.value;
                 this.#model.loadCmnToDisplay(this.displaySelectedCmn, this.#model.selectedCmnCode);
                 this.#view.resetDisplayMeteo();
-                //this.#view.toggleBtnMeteoText();
-                // TODO si booleen a faux => bloquer bouton
-                //console.log("controller 107 : this.#model.isNotDomTom :", this.#model.isNotDomTom);
-                //if(!this.#model.isNotDomTom) this.#view.disableMeteo();
             }
             else {
                 this.#view.resetDisplayedCmn();
@@ -121,7 +116,6 @@ export default class Controller {
    */
   getIsNotDomTom = (regionCode) => {
     let toReturn = true;
-    // TODO faire la logique selon les code regions des domtom
     if(regionCode === "01" || regionCode === "02" || regionCode === "03" || regionCode === "04" || regionCode === "06") {
       toReturn = false;
     }
@@ -132,49 +126,14 @@ export default class Controller {
   }
 
   /**
-   * Méthode qui gère l'événement click sur le bouton qui affiche des données supplémentaires.
-   * @param {event} event 
-   */
-/*
-  clickBtnMeteo = (event) => {
-    console.log('controller 139 : clic bouton')
-    event.preventDefault;
-    if(this.#model.isMeteoDivOpened) {
-     // this.#model.isMeteoDivOpened = false;
-      this.#view.resetDisplayMeteo();
-      this.#view.renderBtnMeteo();
-      //this.#view.toggleBtnMeteoText(this.#model.isMeteoDivOpened);
-      //this.#view.createClickListenerMeteoBtn(this.clickBtnMeteo);
-      // TODO changer texte bouton
-    }
-    else {
-      //this.#model.isMeteoDivOpened = true;
-      this.#model.loadEphemerid(this.displayEphemerid, this.#model.ephemeridDatas, this.#model.selectedCmnCode);
-      this.#model.loadMeteo(this.displayMeteo, this.#model.meteoDatas, this.#model.selectedCmnCode);
-      // TODO changer texte bouton
-    }
-    this.#view.toggleBtnMeteoText(this.#model.isMeteoDivOpened);
-    
-  }*/
-
-  /**
    * Méthode qui fait afficher à la vue la commune "cmn".
    * @param {Cmn} cmnToDisplay 
    */
   displaySelectedCmn = (cmnToDisplay) => {
     this.#view.renderSelectedCmn(cmnToDisplay);
-    // TODO afficher les deux 
-    /*
-    this.#model.loadEphemerid(this.displayEphemerid, this.#model.ephemeridDatas, this.#model.selectedCmnCode);
-      this.#model.loadMeteo(this.displayMeteo, this.#model.meteoDatas, this.#model.selectedCmnCode);
-  
-    */
-    //if(!this.#model.isNotDomTom) this.#view.disableMeteo();
     if(this.#model.isNotDomTom) {
       this.#model.loadEphemerid(this.displayEphemerid, this.#model.ephemeridDatas, this.#model.selectedCmnCode);
       
-      // TODO faire pause de 0.5 sec
-
       setTimeout(() => {
         this.#model.loadMeteo(this.displayMeteo, this.#model.meteoDatas, this.#model.selectedCmnCode);
       }, 500);
@@ -187,15 +146,10 @@ export default class Controller {
    * @param {json} ephemeridDatas : données à afficher.
    */
   displayEphemerid = (ephemeridDatas) => {
-    //this.#model.ephemeridDatas = ephemeridDatas;
     this.#model.selectedCmn.latitude = ephemeridDatas.city.latitude;
     this.#model.selectedCmn.longitude = ephemeridDatas.city.longitude;
     this.#model.selectedCmn.altitude = ephemeridDatas.city.altitude;
     this.#view.renderEphemerid(ephemeridDatas);
-    /*
-    this.#view.renderBtnMeteo();
-    this.#view.toggleBtnMeteoText(this.#model.isMeteoDivOpened);
-    this.#view.createClickListenerMeteoBtn(this.clickBtnMeteo);*/
   }
 
   /**
@@ -204,9 +158,6 @@ export default class Controller {
    */
   displayMeteo = (meteoDatas) => {
     this.#view.renderMeteo(meteoDatas);
-    //this.#view.renderBtnMeteo();
-    //this.#view.toggleBtnMeteoText(this.#model.isMeteoDivOpened);
-    //this.#view.createClickListenerMeteoBtn(this.clickBtnMeteo);
   }
   
 

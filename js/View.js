@@ -214,10 +214,7 @@ export default class View {
     const cmnCp = document.getElementById("cmn-cp");
     cmnCp.innerHTML = +cmn.cp;
     const cmnInsee = document.getElementById("cmn-insee");
-    cmnInsee.innerHTML = cmn.code; //cmn-insee
-    //this.renderBtnMeteo();
-    //this.createClickListenerMeteoBtn(callBack);
-    //this.enableMeteo();
+    cmnInsee.innerHTML = cmn.code;
   };
 
   /**
@@ -313,15 +310,12 @@ export default class View {
    */
   renderMeteo = (meteoDatas) => {
     const divMeteo = document.getElementById("div-meteo");
-    //console.log("view 220 : divMeteo.innerHTML :", divMeteo.innerHTML);
-    //divMeteo.innerHTML = "";
     const titleMeteo = createMarkup("h5", `Données météorologiques `, divMeteo, [
       { class: "mt-3 mb-3 text-warning" },
     ]);
     const iconWeather = createMarkup("i", "", titleMeteo, [{class:"wi"}, {id: "icon-meteo"}]); //<i class="wi wi-night-sleet"></i>
     iconWeather.classList.add(WeatherLib.getWeatherIconClassByCode(meteoDatas.forecast.weather));
     iconWeather.classList.add(WeatherLib.getColorClassByTemps(meteoDatas.forecast.tmin, meteoDatas.forecast.tmax));
-    // getColorClassByTemps*************************************************************************************************************************************************************
     const divMeteoMeteo = createMarkup("div", "", divMeteo, [
       {
         class: "d-flex justify-content-center flex-column align-items-start",
@@ -335,7 +329,6 @@ export default class View {
       [{ class: "text-warning" }, { id: "weather" }]
     );
     
-
     const tempMin = createMarkup("p", "Température min. (°C) : ", divMeteoMeteo, [{class: "mx-4"}]);
     const spanTempMin = createMarkup(
       "span",
@@ -445,70 +438,10 @@ export default class View {
   };
 
   /**
-   * Méthode qui active le bouton.
-   */
-  /*
-  enableMeteo = () => {
-    const btnMeteo = document.getElementById("btn-meteo");
-    if (btnMeteo) btnMeteo.removeAttribute("disabled");
-  };*/
-
-  /**
-   * Méthode qui désactive le bouton.
-   */
-  /*
-  disableMeteo = () => {
-    const btnMeteo = document.getElementById("btn-meteo");
-    if (btnMeteo) btnMeteo.setAttribute("disabled", true);
-  };*/
-
-  /**
    * Méthode qui efface le contenu de la div 'div-meteo'.
    */
   resetDisplayMeteo = () => {
     const divMeteo = document.getElementById("div-meteo");
     divMeteo.innerHTML = "";
   };
-
-  /**
-   * Méthode qui efface le contenu de la div 'div-meteo' s'il n'est pas vide.
-   */
-  /*
-  resetMeteoDivIfnotEmpty = () => {
-    const divMeteo = document.getElementById("div-meteo");
-    if (divMeteo.innerHTML) this.resetDisplayMeteo();
-  };*/
-
-
-  /**
-   * Méthode qui ajoute le bouton au dom.
-   */
-  /*
-  renderBtnMeteo = () => {
-    const divMeteo = document.getElementById("div-meteo");
-    const buttonMeteo = createMarkup(
-      "button",
-      "Afficher les données supplémentaires",
-      divMeteo,
-      [
-        { class: "btn btn-warning mt-4 px-4" },
-        { id: "btn-meteo" },
-        { type: "button" },
-      ]
-    );
-  };*/
-
-  /**
-   * Méthode qui modifie le texte du bouton en fonction du booléen 'isMeteoDivOpened'.
-   * @param {boolean} isMeteoDivOpened 
-   */
-  /*
-  toggleBtnMeteoText = (isMeteoDivOpened) => {
-    const btnMeteo = document.getElementById("btn-meteo");
-    if (isMeteoDivOpened) {
-      btnMeteo.textContent = "Masquer les données supplémentaires";
-    } else {
-      btnMeteo.textContent = "Afficher les données supplémentaires";
-    }
-  };*/
 }

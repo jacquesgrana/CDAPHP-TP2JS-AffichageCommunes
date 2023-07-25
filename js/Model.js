@@ -19,7 +19,6 @@ export default class Model {
 
   #ephemeridDatas = {};
   #meteoDatas = {};
-  #isMeteoDivOpened = false;
   #isNotDomTom = true;
 
   constructor() {
