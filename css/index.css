@@ -66,6 +66,11 @@ footer {
   font-size: xx-large;
 }
 
+#icon-wind-dir {
+  font-size: xx-large;
+  margin-top: -20px;
+}
+
 .cold-temp {
   color: rgb(199, 229, 255);
 }

@@ -381,6 +381,11 @@ static getColorClassByTemps = (min, max) => {
   return toReturn;
 }
 
+static getWindDirectionClassByDir = (dir) => {
+  let toReturn = "from-"+dir+"-deg"; // ou towards-xxx-deg
+  return toReturn;
+}
+
 }
 
 

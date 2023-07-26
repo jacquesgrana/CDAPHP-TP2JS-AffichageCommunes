@@ -390,6 +390,29 @@ export default class View {
       probaWind100,
       [{ class: "text-warning" }, { id: "proba-wind-100" }]
     );
+    const wind10m = createMarkup("p", "Vent moyen à 10m (km/h) : ", divMeteoMeteo, [{class: "mx-4"}]);
+    const spanWind10m = createMarkup(
+      "span",
+      `${meteoDatas.forecast.wind10m}`,
+      wind10m,
+      [{ class: "text-warning" }, { id: "wind-10m" }]
+    );
+    const gust10m = createMarkup("p", "Rafales de vent à 10m (km/h) : ", divMeteoMeteo, [{class: "mx-4"}]);
+    const spanGust10m = createMarkup(
+      "span",
+      `${meteoDatas.forecast.gust10m}`,
+      gust10m,
+      [{ class: "text-warning" }, { id: "gust-10m" }]
+    );
+    const dirwind10m = createMarkup("p", "Direction du vent (°) : ", divMeteoMeteo, [{class: "mx-4"}]);
+    const spanDirwind10m = createMarkup(
+      "span",
+      `${meteoDatas.forecast.dirwind10m}  `,
+      dirwind10m,
+      [{ class: "text-warning" }, { id: "dir-wind-10m" }]
+    );
+    const iconWind = createMarkup("i", "", spanDirwind10m, [{class:"wi wi-wind text-white"}, {id: "icon-wind-dir"}]);
+    iconWind.classList.add(WeatherLib.getWindDirectionClassByDir(meteoDatas.forecast.dirwind10m));
   }
 
   /**
@@ -410,9 +433,9 @@ export default class View {
         "longitude": -1.6819,
         "day": 0,
         "datetime": "2020-10-29T01:00:00+0100",
-        "wind10m": 15,
-        "gust10m": 49,
-        "dirwind10m": 230,
+        "wind10m": 15, //Vent moyen à 10 mètres en km/h
+        "gust10m": 49, //Rafales de vent à 10 mètres en km/h
+        "dirwind10m": 230, //Direction du vent en degrés (0 à 360°)
         "rr10": 0.2,
         "rr1": 0.3,
         "probarain": 40,
