@@ -91,6 +91,10 @@ export default class View {
       { class: "text-warning" },
       { id: "cmn-insee" },
     ]);
+    const divEphem = createMarkup("div", "", divResult, [
+      { class: "d-flex justify-content-center flex-column" },
+      { id: "div-ephem" },
+    ]);
     const divMeteo = createMarkup("div", "", divResult, [
       { class: "d-flex justify-content-center flex-column" },
       { id: "div-meteo" },
@@ -222,7 +226,7 @@ export default class View {
    * @param {json} ephemeridDatas : données à afficher.
    */
   renderEphemerid = (ephemeridDatas) => {
-    const divMeteo = document.getElementById("div-meteo");
+    const divMeteo = document.getElementById("div-ephem");
     //console.log("view 220 : divMeteo.innerHTML :", divMeteo.innerHTML);
     divMeteo.innerHTML = "";
     const titleGeo = createMarkup("h5", "Données géographiques", divMeteo, [

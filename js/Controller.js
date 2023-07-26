@@ -133,11 +133,12 @@ export default class Controller {
     this.#view.renderSelectedCmn(cmnToDisplay);
     if(this.#model.isNotDomTom) {
       this.#model.loadEphemerid(this.displayEphemerid, this.#model.ephemeridDatas, this.#model.selectedCmnCode);
-      
+      this.#model.loadMeteo(this.displayMeteo, this.#model.meteoDatas, this.#model.selectedCmnCode);
+      /*
       setTimeout(() => {
         this.#model.loadMeteo(this.displayMeteo, this.#model.meteoDatas, this.#model.selectedCmnCode);
       }, 500);
-      
+      */
     }
   }
 
