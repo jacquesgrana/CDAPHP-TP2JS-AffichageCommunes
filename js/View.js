@@ -340,15 +340,17 @@ export default class View {
       "span",
       `${meteoDatas.forecast.tmin}`,
       tempMin,
-      [{ class: "text-warning" }, { id: "temp-min" }]
+      [{ class: "" }, { id: "temp-min" }]
     );
+    spanTempMin.classList.add(WeatherLib.getColorClassByOneTemp(meteoDatas.forecast.tmin));
     const tempMax = createMarkup("p", "Température max. (°C) : ", divMeteoMeteo, [{class: "mx-4"}]);
     const spanTempMax = createMarkup(
       "span",
       `${meteoDatas.forecast.tmax}`,
       tempMax,
-      [{ class: "text-warning" }, { id: "temp-max" }]
+      [{ class: "" }, { id: "temp-max" }]
     );
+    spanTempMax.classList.add(WeatherLib.getColorClassByOneTemp(meteoDatas.forecast.tmax));
     const sunHours = createMarkup("p", "Heures d'ensoleillement (heure) : ", divMeteoMeteo, [{class: "mx-4"}]);
     const spanSunHours = createMarkup(
       "span",

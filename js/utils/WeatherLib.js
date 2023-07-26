@@ -381,6 +381,31 @@ static getColorClassByTemps = (min, max) => {
   return toReturn;
 }
 
+static getColorClassByOneTemp = (temp) => {
+  let toReturn = "";
+  if(temp < 0) {
+    toReturn = "cold-temp";
+  }
+  else if(temp >= 0 && temp < 10) {
+    toReturn = "little-cold-temp";
+  }
+  else if(temp >= 10 && temp < 20) {
+    toReturn = "temp-temp";
+  }
+  else if(temp >= 20 && temp < 25) {
+    toReturn = "little-hot-temp";
+  }
+  else if(temp >= 25 && temp < 30) {
+    toReturn = "hot-temp";
+  }
+  else if(temp >= 30 && temp < 35) {
+    toReturn = "very-hot-temp";
+  } else {
+    toReturn = "too-hot-temp";
+  }
+  return toReturn;
+}
+
 static getWindDirectionClassByDir = (dir) => {
   let toReturn = "from-"+dir+"-deg"; // ou towards-xxx-deg
   return toReturn;
