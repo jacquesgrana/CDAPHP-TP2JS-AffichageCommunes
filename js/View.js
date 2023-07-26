@@ -317,9 +317,11 @@ export default class View {
     const titleMeteo = createMarkup("h5", `Données météorologiques `, divMeteo, [
       { class: "mt-3 mb-3 text-warning" },
     ]);
-    const iconWeather = createMarkup("i", "", titleMeteo, [{class:"wi"}, {id: "icon-meteo"}]); //<i class="wi wi-night-sleet"></i>
+    const iconWeather = createMarkup("i", "", titleMeteo, [{class:"wi mx-2"}, {id: "icon-meteo"}]); //<i class="wi wi-night-sleet"></i>
     iconWeather.classList.add(WeatherLib.getWeatherIconClassByCode(meteoDatas.forecast.weather));
     iconWeather.classList.add(WeatherLib.getColorClassByTemps(meteoDatas.forecast.tmin, meteoDatas.forecast.tmax));
+    const iconWind = createMarkup("i", "", titleMeteo, [{class:"wi wi-wind text-white ms-2"}, {id: "icon-wind-dir"}]);
+    iconWind.classList.add(WeatherLib.getWindDirectionClassByDir(meteoDatas.forecast.dirwind10m));
     const divMeteoMeteo = createMarkup("div", "", divMeteo, [
       {
         class: "d-flex justify-content-center flex-column align-items-start",
@@ -411,8 +413,7 @@ export default class View {
       dirwind10m,
       [{ class: "text-warning" }, { id: "dir-wind-10m" }]
     );
-    const iconWind = createMarkup("i", "", spanDirwind10m, [{class:"wi wi-wind text-white"}, {id: "icon-wind-dir"}]);
-    iconWind.classList.add(WeatherLib.getWindDirectionClassByDir(meteoDatas.forecast.dirwind10m));
+    
   }
 
   /**
