@@ -313,13 +313,14 @@ export default class View {
    * @param {json} meteoDatas : données à afficher.
    */
   renderMeteo = (meteoDatas) => {
+    const temp = (meteoDatas.forecast.tmin + meteoDatas.forecast.tmax)/2
     const divMeteo = document.getElementById("div-meteo");
     const titleMeteo = createMarkup("h5", `Données météorologiques `, divMeteo, [
       { class: "mt-3 mb-3 text-warning" },
     ]);
     const iconWeather = createMarkup("i", "", titleMeteo, [{class:"wi mx-2"}, {id: "icon-meteo"}]); //<i class="wi wi-night-sleet"></i>
     iconWeather.classList.add(WeatherLib.getWeatherIconClassByCode(meteoDatas.forecast.weather));
-    iconWeather.classList.add(WeatherLib.getColorClassByTemps(meteoDatas.forecast.tmin, meteoDatas.forecast.tmax));
+    iconWeather.classList.add(WeatherLib.getColorClassByTemp(temp));
     const iconWind = createMarkup("i", "", titleMeteo, [{class:"wi wi-wind text-white ms-2"}, {id: "icon-wind-dir"}]);
     iconWind.classList.add(WeatherLib.getWindDirectionClassByDir(meteoDatas.forecast.dirwind10m));
     const divMeteoMeteo = createMarkup("div", "", divMeteo, [
@@ -342,7 +343,7 @@ export default class View {
       tempMin,
       [{ class: "" }, { id: "temp-min" }]
     );
-    spanTempMin.classList.add(WeatherLib.getColorClassByOneTemp(meteoDatas.forecast.tmin));
+    spanTempMin.classList.add(WeatherLib.getColorClassByTemp(meteoDatas.forecast.tmin));
     const tempMax = createMarkup("p", "Température max. (°C) : ", divMeteoMeteo, [{class: "mx-4"}]);
     const spanTempMax = createMarkup(
       "span",
@@ -350,7 +351,7 @@ export default class View {
       tempMax,
       [{ class: "" }, { id: "temp-max" }]
     );
-    spanTempMax.classList.add(WeatherLib.getColorClassByOneTemp(meteoDatas.forecast.tmax));
+    spanTempMax.classList.add(WeatherLib.getColorClassByTemp(meteoDatas.forecast.tmax));
     const sunHours = createMarkup("p", "Heures d'ensoleillement (heure) : ", divMeteoMeteo, [{class: "mx-4"}]);
     const spanSunHours = createMarkup(
       "span",
@@ -468,10 +469,20 @@ export default class View {
   };
 
   /**
+   * Méthode qui efface le contenu de la div 'div-ephem'.
+   */
+  resetDisplayEphem = () => {
+    const divEphem = document.getElementById("div-ephem");
+    divEphem.innerHTML = "";
+  };
+
+  /**
    * Méthode qui efface le contenu de la div 'div-meteo'.
    */
   resetDisplayMeteo = () => {
     const divMeteo = document.getElementById("div-meteo");
     divMeteo.innerHTML = "";
   };
+
+
 }

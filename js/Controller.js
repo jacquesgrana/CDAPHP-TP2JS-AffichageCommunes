@@ -67,6 +67,7 @@ export default class Controller {
                 this.#view.resetSelectDpt();
                 this.#view.resetSelectCmn();
                 this.#view.resetDisplayedCmn();
+                this.#view.resetDisplayEphem();
                 this.#view.resetDisplayMeteo();
                 this.#model.isNotDomTom = this.getIsNotDomTom(this.#model.selectedRegCode);
                 this.#model.loadDpts(this.fillSelectDpt, this.#model.selectedRegCode);
@@ -75,6 +76,7 @@ export default class Controller {
                 this.#view.resetSelectDpt();
                 this.#view.resetSelectCmn();
                 this.#view.resetDisplayedCmn();
+                this.#view.resetDisplayEphem();
                 this.#view.resetDisplayMeteo();
                 this.#model.selectedDptCode = "empty";
                 this.#model.selectedCmnCode = "empty";
@@ -85,12 +87,14 @@ export default class Controller {
                 this.#model.selectedDptCode = event.target.value;
                 this.#view.resetSelectCmn();
                 this.#view.resetDisplayedCmn();
+                this.#view.resetDisplayEphem();
                 this.#view.resetDisplayMeteo();
                 this.#model.loadCmns(this.fillSelectCmn, this.#model.selectedDptCode);
             }
             else {
                 this.#view.resetSelectCmn();
                 this.#view.resetDisplayedCmn();
+                this.#view.resetDisplayEphem();
                 this.#view.resetDisplayMeteo();
                 this.#model.selectedCmnCode = "empty";
             }
@@ -99,10 +103,12 @@ export default class Controller {
             if(event.target.value != 'empty') {
                 this.#model.selectedCmnCode = event.target.value;
                 this.#model.loadCmnToDisplay(this.displaySelectedCmn, this.#model.selectedCmnCode);
+                this.#view.resetDisplayEphem();
                 this.#view.resetDisplayMeteo();
             }
             else {
                 this.#view.resetDisplayedCmn();
+                this.#view.resetDisplayEphem();
                 this.#view.resetDisplayMeteo();
             }
         break;

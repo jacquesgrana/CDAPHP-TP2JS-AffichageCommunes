@@ -2,8 +2,8 @@ export default class WeatherLib {
 
   /**
    * Méthode qui renvoit la description du temps 'sensible' selon le code passé en paramètre.
-   * @param {number} code : code du temps 'sensible' prévu.
-   * @returns {string} : description ccorrespondante.
+   * @param {int} code : code du temps 'sensible' prévu.
+   * @returns {string} : description correspondante.
    */
 static getWeatherNameByCode = (code) => {
   let toReturn = "";
@@ -290,9 +290,11 @@ static getWeatherNameByCode = (code) => {
   return toReturn;
 };
 
-
-//wi-night-sleet
-
+/**
+ * Fonction qui renvoit la class html/css de l'icone du temps correspondant au code passé en paramètre.
+ * @param {int} code : code du temps 'sensible' prévu.
+ * @returns {string} : class de l'icone.
+ */
 static getWeatherIconClassByCode = (code) => {
   let toReturn = "";
   if(code === 0) {
@@ -355,33 +357,12 @@ static getWeatherIconClassByCode = (code) => {
   return toReturn;
 }
 
-static getColorClassByTemps = (min, max) => {
-  let toReturn = "";
-  const temp = (min + max) / 2;
-  if(temp < 0) {
-    toReturn = "cold-temp";
-  }
-  else if(temp >= 0 && temp < 10) {
-    toReturn = "little-cold-temp";
-  }
-  else if(temp >= 10 && temp < 20) {
-    toReturn = "temp-temp";
-  }
-  else if(temp >= 20 && temp < 25) {
-    toReturn = "little-hot-temp";
-  }
-  else if(temp >= 25 && temp < 30) {
-    toReturn = "hot-temp";
-  }
-  else if(temp >= 30 && temp < 35) {
-    toReturn = "very-hot-temp";
-  } else {
-    toReturn = "too-hot-temp";
-  }
-  return toReturn;
-}
-
-static getColorClassByOneTemp = (temp) => {
+/**
+ * Fonction qui renvoit la class html/css pour colorer un element du dom selon la température passée en paramètre.
+ * @param {int} temp : température à prendre en compte
+ * @returns {string} : class css pour colorer
+ */
+static getColorClassByTemp = (temp) => {
   let toReturn = "";
   if(temp < 0) {
     toReturn = "cold-temp";
@@ -406,6 +387,11 @@ static getColorClassByOneTemp = (temp) => {
   return toReturn;
 }
 
+/**
+ * Fonction qui renvoit la class html/css de l'icone qui montre la direction du vent.
+ * @param {int} dir : direction du vent en degré (Nord = 0° ou 360°).
+ * @returns {string} : class de l'icone montrant la direction du vent.
+ */
 static getWindDirectionClassByDir = (dir) => {
   let toReturn = "from-"+dir+"-deg"; // ou towards-xxx-deg
   return toReturn;
